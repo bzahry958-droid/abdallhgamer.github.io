@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عبدالله گیمر</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Tahoma, sans-serif;
+            background: #101010;
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            background: #00c853;
+            padding: 25px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 40px 15px;
+        }
+
+        h1 {
+            color: #00e676;
+        }
+
+        p {
+            color: #cccccc;
+            font-size: 17px;
+        }
+
+        button {
+            background: #00c853;
+            color: white;
+            border: none;
+            padding: 13px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 20px;
+            background: #202020;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        عبدالله گیمر
+    </header>
+
+    <main>
+        <h1>به سایت

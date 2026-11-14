@@ -18,6 +18,7 @@ background:#151f38;
 padding:20px;
 text-align:center;
 color:#00e5ff;
+font-size:20px;
 font-weight:bold;
 }
 .container{
@@ -29,13 +30,13 @@ padding:15px;
 background:#17233d;
 padding:18px;
 border-radius:14px;
-margin-top:15px;
+margin-bottom:15px;
 }
 input{
 width:100%;
 padding:13px;
 margin:7px 0;
-border:0;
+border:1px solid #344866;
 border-radius:8px;
 background:#263653;
 color:white;
@@ -48,14 +49,23 @@ border:0;
 border-radius:8px;
 background:#00d5ff;
 font-weight:bold;
+cursor:pointer;
 }
-#panel{display:none}
+.hidden{display:none}
 .item{
 background:#263653;
 padding:12px;
 border-radius:8px;
 margin:8px 0;
 }
+.message{
+background:#263653;
+padding:10px;
+border-radius:10px;
+margin:8px 0;
+overflow-wrap:anywhere;
+}
+small{color:#00e5ff}
 </style>
 </head>
 
@@ -65,19 +75,19 @@ margin:8px 0;
 
 <div class="container">
 
-<div class="box" id="account">
-<h3>حساب کاربری</h3>
+<div class="box" id="auth">
+<h3>👤 حساب کاربری</h3>
 <input id="username" placeholder="نام کاربری">
 <input id="password" type="password" placeholder="رمز عبور">
 <button onclick="register()">ثبت نام</button>
 <button onclick="login()">ورود</button>
 </div>
 
-<div id="panel">
+<div id="app" class="hidden">
 
 <div class="box">
 <h3 id="welcome"></h3>
-<button onclick="logout()">خروج از حساب</button>
+<button onclick="logout()">خروج</button>
 </div>
 
 <div class="box">
@@ -89,8 +99,8 @@ margin:8px 0;
 
 <div class="box">
 <h3>💬 پیام گروه</h3>
-<input id="groupTarget" placeholder="نام گروه">
-<input id="message" placeholder="پیام خود را بنویسید">
+<input id="targetGroup" placeholder="نام گروه">
+<input id="messageText" placeholder="پیام خود را بنویسید">
 <button onclick="sendMessage()">ارسال پیام</button>
 <div id="messages"></div>
 </div>
@@ -99,35 +109,19 @@ margin:8px 0;
 </div>
 
 <script>
+const DB = "abdollah_gamer_messenger";
+
+function load(){
+return JSON.parse(localStorage.getItem(DB) ||
+'{"users":[],"groups":[],"messages":[]}');
+}
+
+function save(data){
+localStorage.setItem(DB,JSON.stringify(data));
+}
+
 let currentUser = "";
 
-async function getData(){
-    const response = await fetch("data.json");
-    return await response.json();
-}
-
-async function register(){
-    alert("برای ثبت حساب دائمی باید سرور متصل به data.json راه‌اندازی شود.");
-}
-
-async function login(){
-    alert("ورود واقعی پس از راه‌اندازی سرور فعال می‌شود.");
-}
-
-function logout(){
-    currentUser="";
-    account.style.display="block";
-    panel.style.display="none";
-}
-
-function createGroup(){
-    alert("ساخت گروه پس از راه‌اندازی سرور فعال می‌شود.");
-}
-
-function sendMessage(){
-    alert("ارسال پیام پس از راه‌اندازی سرور فعال می‌شود.");
-}
-</script>
-
-</body>
-</html>
+function register(){
+let u=document.getElementById("username").value.trim();
+let p=document.getElementById("password
